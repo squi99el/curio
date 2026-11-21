@@ -64,6 +64,22 @@ function absoluteUrl(u, base) {
 
 const normTitle = (t) => t.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
 
+const STOP = new Set("the a an and or of to in on for with is are was by at from as its it this that his her their how why what who".split(" "));
+/** Significant words of a title, ignoring a trailing "| Outlet" / "- Outlet" credit. */
+export function titleTokens(t) {
+  const core = t.replace(/\s+[|\u2013\u2014-]\s+[^|\u2013\u2014-]{2,40}$/, "");
+  const words = new Set(normTitle(core).split(" ").filter((w) => w.length > 2 && !STOP.has(w)));
+  return Object.assign(words, { norm: normTitle(t) });
+}
+/** True when two headlines are probably the same story (shared-word overlap). */
+export function similarTitles(a, b) {
+  if (a.norm === b.norm) return true;
+  if (a.size < 3 || b.size < 3) return false;
+  let shared = 0;
+  for (const w of a) if (b.has(w)) shared++;
+  return shared / Math.min(a.size, b.size) >= 0.7;
+}
+
 function normUrl(u) {
   try {
     const x = new URL(u);
@@ -338,25 +354,27 @@ export function assembleTopic(items, opts, seen = new Set(), now = Date.now()) {
   const perSourceCount = new Map();
   const perFeedCount = new Map();
   const picked = [];
-  const localTitles = new Set();
+  const localTitles = [];
   const localUrls = new Set();
+  const seenTitles = (seen.titles ??= []);
 
   for (const item of fresh) {
     if (picked.length >= limit) break;
     const key = normUrl(item.url);
-    const tkey = normTitle(item.title);
-    if (seen.has(key) || localUrls.has(key) || localTitles.has(tkey)) continue;
+    const tkey = titleTokens(item.title);
+    if (seen.has(key) || localUrls.has(key)) continue;
+    if (localTitles.some((t) => similarTitles(t, tkey)) || seenTitles.some((t) => similarTitles(t, tkey))) continue;
     const n = perSourceCount.get(item.source) ?? 0;
     const f = perFeedCount.get(item.feedKey) ?? 0;
     // Cap per publisher, and per feed so a high-volume aggregator can't crowd out curated feeds.
     if (n >= perSource || f >= perFeed) continue;
     perSourceCount.set(item.source, n + 1);
     perFeedCount.set(item.feedKey, f + 1);
-    localTitles.add(tkey);
+    localTitles.push(tkey);
     localUrls.add(key);
     picked.push(item);
   }
-  for (const p of picked) seen.add(normUrl(p.url));
+  for (const p of picked) { seen.add(normUrl(p.url)); seenTitles.push(titleTokens(p.title)); }
   return picked.map(({ _t, feedKey, ...rest }) => rest);
 }
 

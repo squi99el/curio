@@ -180,3 +180,15 @@ test("buildHero degrades gracefully: attribution failure keeps the image, feed f
 test("stripHtml keeps inline punctuation tidy", () => {
   assert.equal(stripHtml("Eurasian <i>Upupa epops</i> (<b>bird</b>) in Park<span>,</span> India"), "Eurasian Upupa epops (bird) in Park, India");
 });
+
+test("near-duplicate headlines from different outlets are collapsed", async () => {
+  const { assembleTopic } = await import("../scripts/fetch.mjs");
+  const now = Date.now();
+  const mk = (title, url, source) => ({ title, url, source, feedKey: source, published: new Date(now - 3600e3).toISOString(), summary: "" });
+  const out = assembleTopic(
+    [mk("Delhi-based lawyer Sarna pens high-altitude folk horror | Hindustan Times", "https://a.com/1", "A"),
+     mk("Delhi-based lawyer Sarna pens high-altitude folk horror", "https://b.com/2", "B"),
+     mk("Wicker review: a different story entirely", "https://c.com/3", "C")],
+    { limit: 8, perSource: 2, maxAgeDays: 14 }, new Set(), now);
+  assert.equal(out.length, 2);
+});
