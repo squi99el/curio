@@ -1,0 +1,512 @@
+{
+  "defaults": {
+    "limit": 8,
+    "perSource": 2,
+    "perFeed": 3,
+    "maxAgeDays": 14
+  },
+  "topics": [
+    {
+      "id": "independence",
+      "title": "Scottish independence",
+      "blurb": "Politics, polling and the constitutional debate",
+      "maxAgeDays": 7,
+      "feeds": [
+        {
+          "name": "The National",
+          "url": "https://www.thenational.scot/news/rss/",
+          "include": "independen|indyref|referendum|SNP|Holyrood|self-determination|Section 30|Yes Scotland|Union"
+        },
+        {
+          "name": "Bella Caledonia",
+          "url": "https://bellacaledonia.org.uk/feed/"
+        },
+        {
+          "name": "Google News",
+          "url": "https://news.google.com/rss/search?q=%22Scottish+independence%22&hl=en-GB&gl=GB&ceid=GB:en"
+        }
+      ],
+      "color": "#1f3a5f"
+    },
+    {
+      "id": "folklore",
+      "title": "Scottish folklore & mythology",
+      "blurb": "Selkies, kelpies, fairy lore and Gaelic tradition",
+      "maxAgeDays": 90,
+      "feeds": [
+        {
+          "name": "Google News",
+          "url": "https://news.google.com/rss/search?q=%22Scottish+folklore%22+OR+%22Scottish+mythology%22+OR+%22Gaelic+folklore%22+OR+%22Highland+folklore%22&hl=en-GB&gl=GB&ceid=GB:en",
+          "exclude": "Logie|\\bdogs?\\b|sheepdog|cattle|puppy"
+        },
+        {
+          "name": "Google News",
+          "url": "https://news.google.com/rss/search?q=selkie+OR+kelpie+OR+%22Celtic+mythology%22+OR+%22Scottish+legend%22&hl=en-GB&gl=GB&ceid=GB:en",
+          "exclude": "Logie|\\bdogs?\\b|sheepdog|cattle|puppy"
+        }
+      ],
+      "color": "#44502f"
+    },
+    {
+      "id": "uncanny",
+      "title": "Uncanny & unexplained",
+      "blurb": "Spooky stories, hauntings and things that don't add up",
+      "maxAgeDays": 30,
+      "feeds": [
+        {
+          "name": "Google News",
+          "url": "https://news.google.com/rss/search?q=unexplained+OR+uncanny+OR+paranormal+%22true+story%22&hl=en-GB&gl=GB&ceid=GB:en"
+        },
+        {
+          "name": "Google News",
+          "url": "https://news.google.com/rss/search?q=haunted+Scotland+OR+%22Scottish+ghost%22+OR+%22strange+sightings%22&hl=en-GB&gl=GB&ceid=GB:en"
+        },
+        {
+          "name": "Atlas Obscura",
+          "url": "https://www.atlasobscura.com/feeds/latest",
+          "include": "haunted|ghost|folklore|legend|mystery|cursed|occult|strange|eerie|macabre|witch"
+        }
+      ],
+      "color": "#2c2340"
+    },
+    {
+      "id": "folkhorror",
+      "title": "Folk horror",
+      "blurb": "Old customs, strange landscapes and rural dread",
+      "color": "#3d2b1f",
+      "maxAgeDays": 45,
+      "feeds": [
+        {
+          "name": "Bloody Disgusting",
+          "url": "https://bloody-disgusting.com/feed/",
+          "include": "folk[ -]horror|pagan|wicker man|midsommar|rural horror|witchcraft|folk ritual|village cult"
+        },
+        {
+          "name": "Dread Central",
+          "url": "https://www.dreadcentral.com/feed/",
+          "include": "folk[ -]horror|pagan|wicker man|midsommar|rural horror|witchcraft|folk ritual|village cult"
+        },
+        {
+          "name": "Google News",
+          "url": "https://news.google.com/rss/search?q=%22folk+horror%22&hl=en-GB&gl=GB&ceid=GB:en"
+        }
+      ]
+    },
+    {
+      "id": "places",
+      "title": "Unusual places in Scotland",
+      "blurb": "Hidden corners, odd landmarks and wild places",
+      "maxAgeDays": 120,
+      "feeds": [
+        {
+          "name": "Atlas Obscura",
+          "url": "https://www.atlasobscura.com/feeds/latest",
+          "include": "\\b(Scotland|Scottish|Hebrides|Orkney|Shetland|Edinburgh|Glasgow|Isle of Skye|Fife|Aberdeen|Highlands of Scotland)\\b"
+        },
+        {
+          "name": "Google News",
+          "url": "https://news.google.com/rss/search?q=Scotland+%22hidden+gem%22+OR+bothy+OR+%22standing+stones%22+OR+%22abandoned%22+OR+%22secret%22+travel&hl=en-GB&gl=GB&ceid=GB:en",
+          "exclude": "fees|prices?\\b|deals?\\b|sale\\b|investigat|gyms?\\b"
+        },
+        {
+          "name": "Google News",
+          "url": "https://news.google.com/rss/search?q=%22Scotland%22+%22off+the+beaten+path%22+OR+%22wild+camping%22+OR+%22remote+island%22&hl=en-GB&gl=GB&ceid=GB:en",
+          "exclude": "fees|prices?\\b|deals?\\b|sale\\b|investigat|gyms?\\b"
+        },
+        {
+          "name": "Google News",
+          "url": "https://news.google.com/rss/search?q=Scotland+%28castle+OR+loch+OR+glen+OR+island+OR+ruins%29+%28%22hidden+gem%22+OR+%22little-known%22+OR+%22best+kept+secret%22+OR+remote%29&hl=en-GB&gl=GB&ceid=GB:en",
+          "exclude": "fees|prices?\\b|deals?\\b|sale\\b|investigat|gyms?\\b"
+        }
+      ],
+      "color": "#8a3f2b"
+    },
+    {
+      "id": "rewilding",
+      "title": "Rewilding & Scottish nature",
+      "blurb": "Beavers, wildcats, forests and wild places",
+      "color": "#3f7d3a",
+      "maxAgeDays": 45,
+      "feeds": [
+        {
+          "name": "Trees for Life",
+          "url": "https://treesforlife.org.uk/feed/"
+        },
+        {
+          "name": "Scottish Wildlife Trust",
+          "url": "https://scottishwildlifetrust.org.uk/feed/"
+        },
+        {
+          "name": "The National",
+          "url": "https://www.thenational.scot/news/rss/",
+          "include": "rewild|beaver|wildcat|pine marten|sea eagle|wildlife|Caledonian|nature restoration|red squirrel|capercaillie|lynx"
+        },
+        {
+          "name": "Google News",
+          "url": "https://news.google.com/rss/search?q=Scotland+%28rewilding+OR+beavers+OR+wildcats+OR+%22pine+marten%22+OR+%22Caledonian+forest%22+OR+%22sea+eagle%22+OR+%22nature+restoration%22%29&hl=en-GB&gl=GB&ceid=GB:en"
+        }
+      ]
+    },
+    {
+      "id": "photography",
+      "title": "Travel photography",
+      "blurb": "Landscapes, journeys and remarkable images",
+      "maxAgeDays": 30,
+      "feeds": [
+        {
+          "name": "Colossal",
+          "url": "https://www.thisiscolossal.com/category/photography/feed/"
+        },
+        {
+          "name": "PetaPixel",
+          "url": "https://petapixel.com/feed/",
+          "include": "travel|landscape|aerial|expedition|wildlife|nature|photographer",
+          "exclude": "camera review|lens review|deal|firmware|sale"
+        },
+        {
+          "name": "My Modern Met",
+          "url": "https://www.mymodernmet.com/feed/",
+          "include": "photograph|travel|landscape|aerial|photo series"
+        },
+        {
+          "name": "Google News",
+          "url": "https://news.google.com/rss/search?q=%28%22travel+photography%22+OR+%22landscape+photography%22+OR+%22wildlife+photography%22%29+%28award+OR+winners+OR+exhibition+OR+stunning%29&hl=en-GB&gl=GB&ceid=GB:en"
+        }
+      ],
+      "color": "#1d4b4f"
+    },
+    {
+      "id": "cinema",
+      "title": "Quirky & dark-comedy film",
+      "blurb": "New alternative cinema, black comedy and the offbeat",
+      "maxAgeDays": 21,
+      "feeds": [
+        {
+          "name": "MUBI Notebook",
+          "url": "https://mubi.com/notebook/posts.atom"
+        },
+        {
+          "name": "Film Comment",
+          "url": "https://www.filmcomment.com/feed/"
+        },
+        {
+          "name": "IndieWire",
+          "url": "https://www.indiewire.com/feed/",
+          "include": "comedy|dark|quirky|indie|festival|A24|Neon|Searchlight|weird|offbeat|Sundance|Cannes|Venice|Lanthimos|Yorgos"
+        },
+        {
+          "name": "Letterboxd Journal",
+          "url": "https://letterboxd.com/journal/rss/"
+        },
+        {
+          "name": "Google News",
+          "url": "https://news.google.com/rss/search?q=%28%22black+comedy%22+OR+%22dark+comedy%22%29+%28film+OR+movie%29+-comedians+-stand-up+-obituary&hl=en-GB&gl=GB&ceid=GB:en"
+        }
+      ],
+      "color": "#6a1f31"
+    },
+    {
+      "id": "ai",
+      "title": "AI",
+      "blurb": "Models, research and what it means",
+      "maxAgeDays": 5,
+      "feeds": [
+        {
+          "name": "MIT Technology Review",
+          "url": "https://www.technologyreview.com/topic/artificial-intelligence/feed"
+        },
+        {
+          "name": "The Verge",
+          "url": "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml"
+        },
+        {
+          "name": "WIRED",
+          "url": "https://www.wired.com/feed/tag/ai/latest/rss"
+        }
+      ],
+      "color": "#26262b"
+    },
+    {
+      "id": "futurism",
+      "title": "Futurism",
+      "blurb": "Predictions, forecasts and where it's all heading",
+      "color": "#2f3f9a",
+      "maxAgeDays": 21,
+      "feeds": [
+        {
+          "name": "Future Today Institute",
+          "url": "https://futuretodayinstitute.com/feed/"
+        },
+        {
+          "name": "Exponential View",
+          "url": "https://www.exponentialview.co/feed",
+          "include": "predict|forecast|futurist|foresight|the future\\b|future of|by 20[3-6]\\d|next (decade|century|generation)|in (10|20|50|100) years|will (soon )?(transform|reshape|replace|disappear|end|become)|could (soon|one day|someday)|scenarios?\\b|prophe"
+        },
+        {
+          "name": "Big Think",
+          "url": "https://bigthink.com/feed/",
+          "include": "predict|forecast|futurist|foresight|the future\\b|future of|by 20[3-6]\\d|next (decade|century|generation)|in (10|20|50|100) years|will (soon )?(transform|reshape|replace|disappear|end|become)|could (soon|one day|someday)|scenarios?\\b|prophe"
+        },
+        {
+          "name": "Noema",
+          "url": "https://www.noemamag.com/feed/",
+          "include": "predict|forecast|futurist|foresight|the future\\b|future of|by 20[3-6]\\d|next (decade|century|generation)|in (10|20|50|100) years|will (soon )?(transform|reshape|replace|disappear|end|become)|could (soon|one day|someday)|scenarios?\\b|prophe"
+        },
+        {
+          "name": "Singularity Hub",
+          "url": "https://singularityhub.com/feed/",
+          "include": "predict|forecast|futurist|foresight|the future\\b|future of|by 20[3-6]\\d|next (decade|century|generation)|in (10|20|50|100) years|will (soon )?(transform|reshape|replace|disappear|end|become)|could (soon|one day|someday)|scenarios?\\b|prophe"
+        },
+        {
+          "name": "Futurism",
+          "url": "https://futurism.com/feed",
+          "include": "predict|forecast|futurist|foresight|the future\\b|future of|by 20[3-6]\\d|next (decade|century|generation)|in (10|20|50|100) years|will (soon )?(transform|reshape|replace|disappear|end|become)|could (soon|one day|someday)|scenarios?\\b|prophe"
+        },
+        {
+          "name": "Google News",
+          "url": "https://news.google.com/rss/search?q=%28futurist+OR+%22predicts%22+OR+%22forecast%22%29+%28%22by+2030%22+OR+%22by+2040%22+OR+%22by+2050%22+OR+%22next+decade%22+OR+%22future+of%22%29&hl=en-GB&gl=GB&ceid=GB:en",
+          "exclude": "stocks?\\b|shares\\b|\\$\\d|price target|\\bQQQ\\b|\\bETF\\b|market (size|share|report)|\\bCAGR\\b|Invesco|investors?\\b|Bitcoin|crypto|dividend|earnings"
+        }
+      ]
+    },
+    {
+      "id": "ux",
+      "title": "UX design",
+      "blurb": "Research, craft and product design",
+      "maxAgeDays": 21,
+      "feeds": [
+        {
+          "name": "Nielsen Norman Group",
+          "url": "https://www.nngroup.com/feed/rss/"
+        },
+        {
+          "name": "UX Collective",
+          "url": "https://uxdesign.cc/feed"
+        },
+        {
+          "name": "Smashing Magazine",
+          "url": "https://www.smashingmagazine.com/feed/",
+          "include": "UX|design|accessib|interface|research|usability|user"
+        },
+        {
+          "name": "Fast Company Design",
+          "url": "https://www.fastcompany.com/co-design/rss"
+        }
+      ],
+      "color": "#b24f22"
+    },
+    {
+      "id": "writing",
+      "title": "Fiction writing & editing",
+      "blurb": "Craft, revision and the writing life",
+      "maxAgeDays": 30,
+      "feeds": [
+        {
+          "name": "Jane Friedman",
+          "url": "https://janefriedman.com/feed/",
+          "exclude": "Black Friday|Cyber Monday|\\bdeals?\\b|Lit Hub Daily|Canon of Ethics|listening period|giveaway"
+        },
+        {
+          "name": "Writers Helping Writers",
+          "url": "https://writershelpingwriters.net/feed/",
+          "exclude": "Black Friday|Cyber Monday|\\bdeals?\\b|Lit Hub Daily|Canon of Ethics|listening period|giveaway"
+        },
+        {
+          "name": "Literary Hub",
+          "url": "https://lithub.com/feed/",
+          "include": "writing|writer|craft|edit|fiction|novel|revision|prose",
+          "exclude": "Black Friday|Cyber Monday|\\bdeals?\\b|Lit Hub Daily|Canon of Ethics|listening period|giveaway"
+        },
+        {
+          "name": "The Creative Independent",
+          "url": "https://thecreativeindependent.com/feed.xml"
+        }
+      ],
+      "color": "#52402b"
+    },
+    {
+      "id": "fantasy",
+      "title": "Epic fantasy",
+      "blurb": "Worlds, series and the people building them",
+      "maxAgeDays": 21,
+      "feeds": [
+        {
+          "name": "Reactor",
+          "url": "https://reactormag.com/tag/epic-fantasy/feed/"
+        },
+        {
+          "name": "Reactor",
+          "url": "https://reactormag.com/feed/",
+          "include": "fantasy|epic|Sanderson|Abercrombie|Jordan|Tolkien|Martin|Rothfuss|grimdark"
+        },
+        {
+          "name": "Fantasy-Faction",
+          "url": "https://www.fantasy-faction.com/feed"
+        },
+        {
+          "name": "SFFWorld",
+          "url": "https://www.sffworld.com/feed/",
+          "include": "fantasy|epic|grimdark"
+        }
+      ],
+      "color": "#53296a"
+    },
+    {
+      "id": "worldbuilding",
+      "title": "Worldbuilding & maps",
+      "blurb": "How invented worlds, maps and languages get made",
+      "color": "#1f5f8b",
+      "maxAgeDays": 45,
+      "feeds": [
+        {
+          "name": "Mythcreants",
+          "url": "https://mythcreants.com/feed/",
+          "include": "worldbuild|setting|culture|magic|map|fantasy world|invented|language|history|religion|geograph"
+        },
+        {
+          "name": "Dyson Logos",
+          "url": "https://dysonlogos.blog/feed/"
+        },
+        {
+          "name": "Fantasy-Faction",
+          "url": "https://www.fantasy-faction.com/feed",
+          "include": "worldbuild|\\bmaps?\\b|conlang|magic system|cartograph"
+        },
+        {
+          "name": "Reactor",
+          "url": "https://reactormag.com/feed/",
+          "include": "worldbuild|\\bmaps?\\b|conlang|invented language|cartograph|magic system"
+        },
+        {
+          "name": "Google News",
+          "url": "https://news.google.com/rss/search?q=%22fantasy+map%22+OR+worldbuilding+OR+conlang+OR+%22constructed+language%22+OR+cartographer&hl=en-GB&gl=GB&ceid=GB:en",
+          "exclude": "anime|MMORPG|TV shows?|\\bseries\\b|ComicBook|FandomWire|manga|Crunchyroll|\\bdeals?\\b|\\bsale\\b|Kickstarter|video game"
+        }
+      ]
+    },
+    {
+      "id": "humanism",
+      "title": "Humanism",
+      "blurb": "Ethics, meaning and living well without gods",
+      "maxAgeDays": 30,
+      "feeds": [
+        {
+          "name": "Humanists UK",
+          "url": "https://humanists.uk/feed/"
+        },
+        {
+          "name": "Humanist Society Scotland",
+          "url": "https://www.humanism.scot/feed/"
+        },
+        {
+          "name": "Aeon",
+          "url": "https://aeon.co/feed.rss"
+        }
+      ],
+      "color": "#2f5d50"
+    },
+    {
+      "id": "stoicism",
+      "title": "Stoicism",
+      "blurb": "Ancient wisdom for modern life",
+      "color": "#5b564c",
+      "maxAgeDays": 45,
+      "feeds": [
+        {
+          "name": "Medium",
+          "url": "https://medium.com/feed/tag/stoicism",
+          "include": "Stoic|Marcus Aurelius|Epictetus|Seneca the Younger|Meditations|memento mori|amor fati|equanimity"
+        },
+        {
+          "name": "Medium",
+          "url": "https://medium.com/feed/tag/stoic-philosophy",
+          "include": "Stoic|Marcus Aurelius|Epictetus|Seneca the Younger|Meditations|memento mori|amor fati|equanimity"
+        },
+        {
+          "name": "Ryan Holiday",
+          "url": "https://ryanholiday.net/feed/"
+        },
+        {
+          "name": "Modern Stoicism",
+          "url": "https://modernstoicism.com/feed/"
+        },
+        {
+          "name": "The Collector",
+          "url": "https://www.thecollector.com/feed/",
+          "include": "Stoic|Marcus Aurelius|Epictetus|Seneca the Younger|Zeno of Citium"
+        },
+        {
+          "name": "Psyche",
+          "url": "https://www.psyche.co/feed",
+          "include": "Stoic|Marcus Aurelius|Epictetus|Seneca the Younger"
+        },
+        {
+          "name": "Aeon",
+          "url": "https://aeon.co/feed.rss",
+          "include": "Stoic|Marcus Aurelius|Epictetus|Seneca the Younger"
+        },
+        {
+          "name": "Google News",
+          "url": "https://news.google.com/rss/search?q=Stoicism+OR+%22Stoic+philosophy%22+OR+%22Marcus+Aurelius%22+OR+Epictetus+OR+%22Daily+Stoic%22&hl=en-GB&gl=GB&ceid=GB:en",
+          "exclude": "\\bUFC\\b|\\bMMA\\b|Nurmagomedov|football|\\bfight(er|ers)?\\b|cricket|rugby|boxing"
+        }
+      ]
+    },
+    {
+      "id": "absurdism",
+      "title": "Absurdism & existentialism",
+      "blurb": "Camus, Kafka, Beckett and the search for meaning",
+      "color": "#8a2a5a",
+      "maxAgeDays": 45,
+      "feeds": [
+        {
+          "name": "The Marginalian",
+          "url": "https://www.themarginalian.org/feed/",
+          "include": "absurd|existential|Camus|Kafka|Samuel Beckett|Sartre|Kierkegaard|Beauvoir|nihil|meaning of life"
+        },
+        {
+          "name": "Aeon",
+          "url": "https://aeon.co/feed.rss",
+          "include": "absurd|existential|Camus|Kafka|Samuel Beckett|Sartre|Kierkegaard|Beauvoir|nihil|meaning of life"
+        },
+        {
+          "name": "Psyche",
+          "url": "https://www.psyche.co/feed",
+          "include": "absurd|existential|Camus|Kafka|Samuel Beckett|Sartre|Kierkegaard|Beauvoir|nihil|meaning of life"
+        },
+        {
+          "name": "The Collector",
+          "url": "https://www.thecollector.com/feed/",
+          "include": "absurd|existential|Camus|Kafka|Samuel Beckett|Sartre|Kierkegaard|Beauvoir|nihil|meaning of life"
+        },
+        {
+          "name": "Open Culture",
+          "url": "https://www.openculture.com/feed",
+          "include": "absurd|existential|Camus|Kafka|Samuel Beckett|Sartre|Kierkegaard|Beauvoir|nihil|meaning of life"
+        },
+        {
+          "name": "Google News",
+          "url": "https://news.google.com/rss/search?q=absurdism+OR+existentialism+OR+%22Albert+Camus%22+OR+Kierkegaard+OR+%22Samuel+Beckett%22+OR+%22Franz+Kafka%22&hl=en-GB&gl=GB&ceid=GB:en",
+          "exclude": "Apache|streaming|Confluent|Castle|Engineering|Construction|Won Order|TradingView|\\bstocks?\\b|Chris Beckett|Margaret Beckett|\\bFC\\b|\\bvs\\.?\\b"
+        }
+      ]
+    },
+    {
+      "id": "goodnews",
+      "title": "Good news",
+      "blurb": "Things going right",
+      "maxAgeDays": 7,
+      "feeds": [
+        {
+          "name": "Good News Network",
+          "url": "https://www.goodnewsnetwork.org/feed/"
+        },
+        {
+          "name": "Reasons to be Cheerful",
+          "url": "https://reasonstobecheerful.world/feed/"
+        }
+      ],
+      "color": "#d9962b"
+    }
+  ]
+}

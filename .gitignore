@@ -1,0 +1,4 @@
+node_modules/
+site/data/news.json
+site/img/
+.DS_Store

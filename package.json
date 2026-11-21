@@ -1,0 +1,21 @@
+{
+  "name": "curio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Curio: a personal browser homepage that aggregates news by interest",
+  "scripts": {
+    "fetch": "node scripts/fetch.mjs",
+    "test": "node --test \"test/*.test.mjs\"",
+    "serve": "python3 -m http.server 8080 -d site",
+    "mirror": "node scripts/mirror-images.mjs",
+    "build": "node scripts/fetch.mjs && node scripts/mirror-images.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "fast-xml-parser": "^5.12.1",
+    "sharp": "^0.35.5"
+  }
+}
