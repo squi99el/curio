@@ -192,3 +192,16 @@ test("near-duplicate headlines from different outlets are collapsed", async () =
     { limit: 8, perSource: 2, maxAgeDays: 14 }, new Set(), now);
   assert.equal(out.length, 2);
 });
+
+test("earthViewIndex: in range and changes day to day", async () => {
+  const { earthViewIndex } = await import("../scripts/fetch.mjs");
+  const base = Date.parse("2026-11-21T12:00:00Z");
+  const seen = new Set();
+  for (let d = 0; d < 30; d++) {
+    const i = earthViewIndex(2609, base + d * 86_400_000);
+    assert.ok(i >= 0 && i < 2609);
+    seen.add(i);
+  }
+  assert.ok(seen.size > 25);
+  assert.equal(earthViewIndex(2609, base), earthViewIndex(2609, base + 3600_000));
+});

@@ -300,6 +300,43 @@ export function fallbackHero(topics) {
   return { title: item.title, dek: item.summary, image: item.image, imageSmall: item.image, width: 0, height: 0, url: item.url, credit: item.source, license: "", date: item.published };
 }
 
+const EV_API = "https://new-images-preview-dot-earth-viewer.appspot.com/_api/";
+
+/** Pick today's Earth View image: a stable pseudo-random index from the UTC date, so it changes daily. */
+export function earthViewIndex(count, now = Date.now()) {
+  const day = Math.floor(now / DAY);
+  return Math.floor(((day * 2654435761) % 4294967296) / 4294967296 * count);
+}
+
+/** Google Earth View: one satellite landscape per day from the public gallery. */
+export async function buildEarthHero({ fetcher = fetchText, now = Date.now(), log = console } = {}) {
+  try {
+    const list = JSON.parse(await fetcher(EV_API + "photos.json", 2));
+    if (!Array.isArray(list) || !list.length) return null;
+    const slug = list[earthViewIndex(list.length, now)].slug;
+    const p = JSON.parse(await fetcher(`${EV_API}${slug}.json`, 2));
+    if (!/^https:\/\/www\.gstatic\.com\//.test(p.photoUrl ?? "")) return null;
+    const place = [p.region, p.country].filter(Boolean).join(", ");
+    return {
+      title: p.name || place || "Earth from above",
+      dek: "A satellite view of the day.",
+      kicker: "Earth from above",
+      image: p.photoUrl,
+      imageSmall: p.thumbUrl && p.thumbUrl !== p.photoUrl ? p.thumbUrl.replace("/preview/", "/full/") : p.photoUrl,
+      width: 1800,
+      height: 1200,
+      url: p.mapsLink || `https://earthview.withgoogle.com/${slug}`,
+      credit: p.attribution || "Google",
+      creditLine: ["Google Earth View", p.attribution].filter(Boolean).join(" · "),
+      license: "",
+      date: new Date(now).toISOString().slice(0, 10),
+    };
+  } catch (e) {
+    log.error?.(`Earth View unavailable: ${e.message}`);
+    return null;
+  }
+}
+
 export async function buildHero({ fetcher = fetchText, log = console } = {}) {
   try {
     const xml = await fetcher(POTD_URL, 2, COMMONS_UA);
@@ -431,7 +468,7 @@ export async function build(config, options = {}) {
     });
   }
 
-  const hero = options.hero === false ? null : (await buildHero({ fetcher, log })) ?? fallbackHero(topics);
+  const hero = options.hero === false ? null : (await buildEarthHero({ fetcher, now, log })) ?? (await buildHero({ fetcher, log })) ?? fallbackHero(topics);
   return { generatedAt: new Date(now).toISOString(), hero, topics, feedStatus };
 }
 

@@ -264,10 +264,10 @@
     const pic = el("img", { src: img, alt: hero.title, fetchpriority: "high", referrerpolicy: "no-referrer", decoding: "async" });
     if (small && small !== img) { pic.setAttribute("srcset", `${small} 1280w, ${img} 1920w`); pic.setAttribute("sizes", "(max-width: 1400px) 100vw, 1320px"); }
     pic.addEventListener("error", () => slot.replaceChildren());
-    const copy = el("div", { class: "copy" }, [el("div", { class: "kicker", text: "Photo of the day" }), el("h2", { text: hero.title })]);
+    const copy = el("div", { class: "copy" }, [el("div", { class: "kicker", text: hero.kicker || "Photo of the day" }), el("h2", { text: hero.title })]);
     if (hero.dek) copy.append(el("p", { class: "dek", text: hero.dek }));
-    const credit = [hero.credit && "Photo: " + hero.credit, hero.license, hero.credit === "Wikimedia Commons" ? "" : "Wikimedia Commons"].filter(Boolean).join(" · ");
-    const a = el("a", { class: "hero", href: url, target: "_blank", rel: "noopener noreferrer", "aria-label": "Photo of the day: " + hero.title }, [pic, copy, el("span", { class: "credit", text: credit })]);
+    const credit = hero.creditLine || [hero.credit && "Photo: " + hero.credit, hero.license, hero.credit === "Wikimedia Commons" ? "" : "Wikimedia Commons"].filter(Boolean).join(" · ");
+    const a = el("a", { class: "hero", href: url, target: "_blank", rel: "noopener noreferrer", "aria-label": (hero.kicker || "Photo of the day") + ": " + hero.title }, [pic, copy, el("span", { class: "credit", text: credit })]);
     slot.replaceChildren(a);
   }
 
@@ -432,7 +432,7 @@
     refresh();
 
     const n = all.length;
-    $("foot").textContent = `${n} stories from ${new Set(all.map((x) => x.item.source)).size} sources, updated ${ago(data.generatedAt)}. Hero photos from Wikimedia Commons. Edit feeds.json to change topics and sources.`;
+    $("foot").textContent = `${n} stories from ${new Set(all.map((x) => x.item.source)).size} sources, updated ${ago(data.generatedAt)}. Hero images from Google Earth View. Edit feeds.json to change topics and sources.`;
 
     let timer;
     $("q").addEventListener("input", (e) => { clearTimeout(timer); timer = setTimeout(() => { query = e.target.value; refresh(); }, 120); });
