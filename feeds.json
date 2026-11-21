@@ -74,8 +74,13 @@
       "title": "Folk horror",
       "blurb": "Old customs, strange landscapes and rural dread",
       "color": "#3d2b1f",
-      "maxAgeDays": 45,
+      "maxAgeDays": 60,
       "feeds": [
+        {
+          "name": "The Horror Syndicate",
+          "url": "https://thehorrorsyndicate.com/feed/",
+          "include": "folk[ -]horror|pagan|wicker man|midsommar|rural horror|witchcraft|folk ritual|village cult"
+        },
         {
           "name": "Bloody Disgusting",
           "url": "https://bloody-disgusting.com/feed/",
@@ -88,7 +93,15 @@
         },
         {
           "name": "Google News",
-          "url": "https://news.google.com/rss/search?q=%22folk+horror%22&hl=en-GB&gl=GB&ceid=GB:en"
+          "url": "https://news.google.com/rss/search?q=%22folk+horror%22+(film+OR+series+OR+novel+OR+review)&hl=en-GB&gl=GB&ceid=GB:en"
+        },
+        {
+          "name": "Google News",
+          "url": "https://news.google.com/rss/search?q=%22wicker+man%22+OR+%22folk+horror%22+OR+%22pagan+horror%22+OR+%22wyrd%22+horror&hl=en-GB&gl=GB&ceid=GB:en"
+        },
+        {
+          "name": "Google News",
+          "url": "https://news.google.com/rss/search?q=%22folk+horror%22+Scotland+OR+Britain+OR+%22British+folk%22&hl=en-GB&gl=GB&ceid=GB:en"
         }
       ]
     },

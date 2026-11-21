@@ -61,7 +61,10 @@
   .brand i { font-style: normal; color: var(--accent); }
   .hello .greet { font-weight: 600; font-size: .9rem; }
   .hello .date { color: var(--muted); font-size: .85rem; }
-  .hello .stale { color: var(--accent); font-weight: 600; font-size: .8rem; }
+  .hello .stale { color: var(--muted); font-size: .85rem; }
+  .hello .stale::before { content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #2f9e5f; margin-right: 7px; vertical-align: 1px; }
+  .hello .stale.warn { color: var(--accent); font-weight: 600; font-size: .8rem; }
+  .hello .stale.warn::before { background: var(--accent); }
   .search { position: relative; display: flex; align-items: center; }
   .search svg { position: absolute; left: 12px; width: 18px; height: 18px; color: var(--muted); pointer-events: none; }
   .search input { width: 180px; padding: 9px 14px 9px 38px; border: 1px solid var(--line); border-radius: 99px; background: var(--surface); color: var(--ink); font: inherit; font-size: .88rem; transition: width .2s ease, border-color .2s ease; }
@@ -119,7 +122,7 @@
   .col { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: var(--gap); }
 
   .card { position: relative; display: block; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); transition: transform .2s ease, box-shadow .2s ease; animation: rise .5s ease both; }
-  .card:hover { transform: translateY(-3px); }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 14px 32px -12px rgb(20 24 40 / .35); }
   @keyframes rise { from { opacity: 0; transform: translateY(10px); } }
 
   .tag { display: inline-block; font: 600 .66rem/1 var(--font-ui); letter-spacing: .12em; text-transform: uppercase; }
@@ -245,9 +248,11 @@
     const now = new Date(), h = now.getHours();
     $("greeting").textContent = h < 5 ? "Still up?" : h < 12 ? "Good morning" : h < 18 ? "Good afternoon" : "Good evening";
     $("date").textContent = now.toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long" });
-    if (generatedAt && (Date.now() - Date.parse(generatedAt)) / 3.6e6 > STALE_HOURS) {
+    if (generatedAt) {
+      const old = (Date.now() - Date.parse(generatedAt)) / 3.6e6 > STALE_HOURS;
       $("stale").hidden = false;
-      $("stale").textContent = "Last updated " + ago(generatedAt) + ", so some feeds may be failing";
+      $("stale").classList.toggle("warn", old);
+      $("stale").textContent = old ? "Last updated " + ago(generatedAt) + ", so some feeds may be failing" : "Updated " + ago(generatedAt);
     }
   }
 
